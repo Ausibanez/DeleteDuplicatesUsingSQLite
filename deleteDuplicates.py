@@ -1,5 +1,10 @@
 import sqlite3
 
+# We create a local sqlite database table with a primary key on (almost) all columns.
+# We then ignore any data integrity errors (key violation errors) since these would be
+# duplicate records so what we end up with are only unique rows from the file in the table.
+# Then the table can be simple selected from and the results printed back to a file.
+
 def deleteDuplicates(fileName):
     conn = sqlite3.connect('single.db')
     cur = conn.cursor()
